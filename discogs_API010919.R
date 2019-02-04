@@ -11,13 +11,6 @@ library(tidyverse);library(expss);library(httr);library(jsonlite)
 
 # probably best?  https://colinfay.me/data-vinyles-discogs-r/
 
-# jazzViz
-Consumer Key	mNUrCPAxFgaBhimogkLJ
-Consumer Secret	GYbnDxjJVUdsapiSDFcgebQLcrnbSqgK
-Request Token URL	https://api.discogs.com/oauth/request_token
-Authorize URL	https://www.discogs.com/oauth/authorize
-Access Token URL	https://api.discogs.com/oauth/access_token
-Edit jazzViz
 
 setwd("K:/bac/jazzdBase")
 # Save username as variable
