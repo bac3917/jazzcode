@@ -1,0 +1,40 @@
+
+### Purpose of code: this code takes a list of jazz musicians and scrapes biographical information from Wikipedia about 
+### each musician and places it into a dataframe
+### Later will MERGE other jazz data to this dataframe using musician first/last name
+
+### Known issues: some musicians are not listed on Wikipedia, and some musicians will not have information 
+### in the Wikipedia class named "table.infobox.vcard.plainlist"
+
+### Possible approaches:  
+###         1. scrape specific data elements from the infobox, such as name and instruments  or  
+###         2. grab all infobox data and parse it subsequently (this approach is shown below)
+###
+
+library(rvest);library(stringr)
+jazzlist<-c("Art Pepper","Horace Silver","Art Blakey","Philly Joe Jones", "Miles Davis","Thelonius Monk", "John Coltrane","Max Roach")
+target_pages = paste0('https://en.wikipedia.org/wiki/Special:Search/', gsub(" ", "_", jazzlist))
+
+# grab all text from Wikipedia infobox
+data=data.frame()
+for (url in target_pages){
+        webpage = read_html(url)
+        # do whatever else you want here with rvest functions 
+        info<-webpage %>% html_nodes(xpath='//*[contains(concat( " ", @class, " " ), concat( " ", "plainlist", " " ))]') %>%
+                html_text() 
+        temp<-data.frame(info, stringsAsFactors = FALSE)
+        data = rbind(data,temp) #combines each result/page into a df
+}
+
+# note: curent code creates extra rows with useless information
+
+# cleaning steps
+library(data.table);library(stringr);library(dplyr)
+
+
+# parsing 
+data$name<-str_extract(data4..........????
+data$birthyear<-str_extract(data4..........????
+data$deathyear<-str_extract(data4..........????
+data$label<-str_extract(data4..........????
+
